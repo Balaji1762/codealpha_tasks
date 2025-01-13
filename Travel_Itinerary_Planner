@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TravelPlanner {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Itinerary> itineraries = new ArrayList<>();
+
+        System.out.println("Welcome to the Travel Itinerary Planner!");
+        boolean addMore = true;
+
+        while (addMore) {
+            System.out.println("Enter your travel destination:");
+            String destination = scanner.nextLine();
+            
+            System.out.println("Enter start date (YYYY-MM-DD):");
+            String startDate = scanner.nextLine();
+            
+            System.out.println("Enter end date (YYYY-MM-DD):");
+            String endDate = scanner.nextLine();
+            
+            System.out.println("Enter your preferences (e.g., sightseeing, beach, adventure):");
+            String preferences = scanner.nextLine();
+            
+            System.out.println("Enter your budget:");
+            double budget = scanner.nextDouble();
+            scanner.nextLine();  // Consume the newline
+            
+            Itinerary itinerary = new Itinerary(destination, startDate, endDate, preferences, budget);
+            itineraries.add(itinerary);
+
+            System.out.println("Would you like to add another destination? (yes/no)");
+            String response = scanner.nextLine();
+            addMore = response.equalsIgnoreCase("yes");
+        }
+
+        System.out.println("\nYour Travel Itinerary:");
+        for (Itinerary itinerary : itineraries) {
+            System.out.println(itinerary);
+            System.out.println("-----------------------------------");
+        }
+        scanner.close();
+    }
+}
